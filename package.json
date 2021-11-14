@@ -5,9 +5,9 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx ts-node src/main.ts",
+    "start": "node build/main.js",
     "dev": "nodemon --quiet src/main.ts",
-    "compilarJS":"tsc && npx babel src/main.ts -o src/destino.js"
+    "compilarJS": "tsc && npx babel src/main.ts -o src/destino.js"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
   "dependencies": {
     "@0x/typescript-typings": "^5.2.1",
     "@types/compression": "^1.7.2",
+    "@types/mongodb": "^4.0.7",
     "0x": "^4.11.0",
     "artillery": "^1.7.9",
     "autocannon": "^7.5.0",
