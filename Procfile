@@ -1,1 +1,1 @@
-web:ts-node src/main.ts
+web:npx ts-node src/main.ts
