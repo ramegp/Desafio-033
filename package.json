@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node build/main.js",
+    "start": "node src/main.js",
     "dev": "nodemon --quiet src/main.ts",
     "compilarJS": "tsc && npx babel src/main.ts -o src/destino.js"
   },
