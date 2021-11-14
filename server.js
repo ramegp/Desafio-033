@@ -4,7 +4,7 @@ const app = express()
 app.use(express.static('public'))
 
 app.get('/mensaje', (req,res) => {
-    res.send('Hola Node.js desde Heroku!');
+    res.send('No puedo hacerlo en typescript');
 })
 
 const PORT = process.env.PORT || 8080
