@@ -7,7 +7,7 @@ argumentos = argumentos.splice(2);
 let datos_para_servidor = helpers_1.sacar_datos_de_los_parametros(argumentos);
 let PORT = process.env.PORT || 8080;
 //@ts-ignore
-const servidor = new ApiBackend_1.ApiBackend(PORT, datos_para_servidor.modo);
+const servidor = new ApiBackend_1.ApiBackend(PORT, "fork");
 /* console.log(`
 ====================================================================
 =============                                       ================

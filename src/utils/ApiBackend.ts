@@ -130,7 +130,7 @@ export class ApiBackend {
         this.app.use(this.compression)
 
         //Carpeta public
-        this.app.use(this.express.static(__dirname + '/public'));
+        //this.app.use(this.express.static(__dirname + '/public'));
 
         this.server.listen(this.port, () => {
             loggerInfo.info(`Servidor express escuchando en el puerto ${this.port} - PID WORKER ${process.pid}`)
