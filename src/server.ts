@@ -9,7 +9,8 @@ let argumentos = process.argv.slice()
 argumentos = argumentos.splice(2)
 
 let datos_para_servidor = sacar_datos_de_los_parametros(argumentos)
-const PORT = process.env.PORT || 8080
+//@ts-ignore
+const PORT = parseInt(process.env.PORT) || 8080
 //@ts-ignore
 const servidor = new ApiBackend(PORT,"fork");
 
