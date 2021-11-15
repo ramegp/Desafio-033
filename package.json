@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/main.js",
     "dev": "nodemon --quiet src/main.ts",
-    "compilarJS": "tsc && npx babel src/main.ts -o src/destino.js"
+    "compilarJS": "tsc && npx babel src/main.ts -o src/destino.js",
+    "deploy": "git add . && git commit -m 'Subido desde node' && git push"
   },
   "repository": {
     "type": "git",
