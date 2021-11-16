@@ -9,13 +9,7 @@ import { Strategy as LocalStrategy } from 'passport-local'
 import { loggerInfo, loggerError, loggerWarn, logger } from '../helpers/logHandler'
 
 export class ApiBackend {
-    //Servidor modo cluster
-    private cluster = require('cluster');
-    private numCPUs = require('os').cpus().length
-
-
-
-
+    
     private express = require("express")
     private app = this.express()
     private server = require("http").Server(this.app);
@@ -53,39 +47,8 @@ export class ApiBackend {
 
     constructor(port: number, modo_servidor: string) {
 
-        if (modo_servidor?.toLowerCase() == 'cluster') {
-            /* MASTER */
-            if (this.cluster.isMaster) {
-                logger.trace(`Servidor iniciado Modo Cluster`);
-                loggerInfo.info(`PID MASTER ${process.pid} -- Numero de cpus ${this.numCPUs}`);
-    
-                for (let i = 0; i < this.numCPUs; i++) {
-                    this.cluster.fork()
-                }
-    
-                this.cluster.on('exit', (worker: any) => {
-                    loggerInfo.info('Worker', worker.process.pid, 'died', new Date().toLocaleString());
-                    loggerWarn.warn('Worker', worker.process.pid, 'died', new Date().toLocaleString());
-                    
-                    this.cluster.fork()
-                })
-            }
-            /* --------------------------------------------------------------------------- */
-            /* WORKERS */
-            else {
-                this.inicializar(port)
-            }
-            
-        } else {
-            logger.trace(`Servidor iniciado Modo Fork`);
-            this.inicializar(port)
-        }
-
-
-
-
-
-
+        logger.trace(`Servidor iniciado`);
+        this.inicializar(port)
 
     }
 

@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node build/server.js",
     "dev": "nodemon --quiet src/main.ts",
-    "compilarJS": "tsc && npx babel src/main.ts -o src/destino.js",
+    "exec": "npx ts-node src/server.ts",
     "deploy": "git add . && git commit -m 'Subido desde node' && git push"
   },
   "repository": {
@@ -41,14 +41,12 @@
     "artillery": "^1.7.9",
     "autocannon": "^7.5.0",
     "bcrypt": "^5.0.1",
-    "cluster": "^0.7.7",
     "compression": "^1.7.4",
     "connect-mongo": "^4.6.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "forever": "^4.0.1",
-    "g": "^2.0.1",
     "jsonwebtoken": "^8.5.1",
     "log4js": "^6.3.0",
     "mongoose": "^5.13.7",

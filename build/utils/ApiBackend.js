@@ -4,9 +4,6 @@ const SalaChat_1 = require("./SalaChat");
 const logHandler_1 = require("../helpers/logHandler");
 class ApiBackend {
     constructor(port, modo_servidor) {
-        //Servidor modo cluster
-        this.cluster = require('cluster');
-        this.numCPUs = require('os').cpus().length;
         this.express = require("express");
         this.app = this.express();
         this.server = require("http").Server(this.app);
@@ -110,30 +107,8 @@ class ApiBackend {
             this.io.emit('usuarios-conectados', this.userConected);
             this.io.emit('mensajes', this.msjSalaFront);
         };
-        if (modo_servidor?.toLowerCase() == 'cluster') {
-            /* MASTER */
-            if (this.cluster.isMaster) {
-                logHandler_1.logger.trace(`Servidor iniciado Modo Cluster`);
-                logHandler_1.loggerInfo.info(`PID MASTER ${process.pid} -- Numero de cpus ${this.numCPUs}`);
-                for (let i = 0; i < this.numCPUs; i++) {
-                    this.cluster.fork();
-                }
-                this.cluster.on('exit', (worker) => {
-                    logHandler_1.loggerInfo.info('Worker', worker.process.pid, 'died', new Date().toLocaleString());
-                    logHandler_1.loggerWarn.warn('Worker', worker.process.pid, 'died', new Date().toLocaleString());
-                    this.cluster.fork();
-                });
-            }
-            /* --------------------------------------------------------------------------- */
-            /* WORKERS */
-            else {
-                this.inicializar(port);
-            }
-        }
-        else {
-            logHandler_1.logger.trace(`Servidor iniciado Modo Fork`);
-            this.inicializar(port);
-        }
+        logHandler_1.logger.trace(`Servidor iniciado`);
+        this.inicializar(port);
     }
 }
 exports.ApiBackend = ApiBackend;

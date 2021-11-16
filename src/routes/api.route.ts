@@ -12,7 +12,6 @@ const ruta_messages = require('./messages.route');
 const ruta_products = require('./products.route');
 
 const ruta_datos = require("./datos.route");
-const ruta_random = require("./randoms.route")
 
 const ruta_error = require('./error.route');
 
@@ -21,7 +20,6 @@ router.use('/cart',ruta_cart);
 router.use('/sing',ruta_log);
 router.use('/messages',ruta_messages);
 router.use('/products',ruta_products);
-router.use('/randoms',ruta_random);
 
 router.use('/datos',ruta_datos)
 
