@@ -55,7 +55,7 @@ export class ApiBackend {
 
     inicializar = (port:number) => {
         const env = require('node-env-file'); // .env file
-        env(__dirname + '/../../.env');
+        env('/../../.env');
 
         this.port = port
 

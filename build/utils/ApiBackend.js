@@ -28,7 +28,7 @@ class ApiBackend {
         this.compression = require('compression');
         this.inicializar = (port) => {
             const env = require('node-env-file'); // .env file
-            env(__dirname + '/../../.env');
+            env('/../../.env');
             this.port = port;
             this.routes_api = require('../routes/api.route');
             this.app.use(this.cors({
