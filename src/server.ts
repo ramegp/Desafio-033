@@ -1,23 +1,14 @@
-import { ApiBackend } from "./utils/ApiBackend";
+import express from 'express'
 
-import { sacar_datos_de_los_parametros } from './helpers/helpers'
+const app = express()
 
+app.get('/',(req:express.Request,res:express.Response)=>{
+    res.json({msg:"Hola mundo"})
+})
 
+const PORT = process.env.PORT || 8001;
 
-
-let argumentos = process.argv.slice()
-argumentos = argumentos.splice(2)
-
-let datos_para_servidor = sacar_datos_de_los_parametros(argumentos)
-//@ts-ignore
-const PORT = parseInt(process.env.PORT) || 8080
-//@ts-ignore
-const servidor = new ApiBackend(PORT,"fork");
-
-/* console.log(`
-====================================================================
-=============                                       ================
-=============           Ready on port ${servidor.listening()}          ================
-=============                                       ================
-====================================================================
-`); */
+app.listen(PORT,()=>{
+    console.log(`Escuchando ${PORT}`);
+    
+})
